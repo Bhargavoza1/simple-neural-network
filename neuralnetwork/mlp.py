@@ -1,7 +1,7 @@
 from module import Module
 from linear import Linear
-from activation import ReLU,Sigmoid, Tanh
-class MLP(Module):
+from activation import ReLU,Sigmoid, Tanh , BinaryStep
+class MLP_XOR(Module):
     # define model elements
     def __init__(self, input_size:float, output_size:float):
 
@@ -9,11 +9,11 @@ class MLP(Module):
         self.hidden1 = Linear(input_size, 3)
         self.act1 = ReLU()
         # second hidden layer
-        self.hidden2 = Linear(3, 2)
+        self.hidden2 = Linear(3, 3)
         self.act2 = ReLU()
         # third hidden layer and output
-        self.hidden3 = Linear(2, output_size)
-        self.act3 = Tanh()
+        self.hidden3 = Linear(3, output_size)
+        self.act3 = BinaryStep()
 
     # forward propagate input
     def forward(self, X):

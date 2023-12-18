@@ -6,7 +6,7 @@ class ReLU(Module):
         # Constructor, but it's empty in this case
         pass
 
-    def forward(self, input_features: int):
+    def forward(self, input_features):
         # Forward pass of the ReLU activation function
         # Save the input features for potential use in backward pass
         self.input_features = input_features
@@ -52,6 +52,25 @@ class Tanh(Module):
 
         # Apply the tanh activation element-wise
         self.activation = self.tanh(self.input_features)
+
+        # Return the result of the activation
+        return self.activation
+
+
+class BinaryStep(Module):
+    def __init__(self):
+        pass
+
+    def binary_step(self, x):
+        return 1 if x >= 0 else 0
+
+    def forward(self, input_features):
+        # Forward pass of the binary step activation function
+
+        # Save the input features for potential use in the backward pass
+        self.input_features = input_features
+        # Apply the binary step activation element-wise using np.vectorize
+        self.activation = np.vectorize(self.binary_step)(self.input_features)
 
         # Return the result of the activation
         return self.activation
