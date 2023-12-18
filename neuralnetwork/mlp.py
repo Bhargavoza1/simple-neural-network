@@ -1,19 +1,19 @@
 from module import Module
 from linear import Linear
-from activation import ReLU,Sigmoid
+from activation import ReLU,Sigmoid, Tanh
 class MLP(Module):
     # define model elements
-    def __init__(self, n_inputs):
+    def __init__(self, input_size:float, output_size:float):
 
         # input to first hidden layer
-        self.hidden1 = Linear(n_inputs, 3)
+        self.hidden1 = Linear(input_size, 3)
         self.act1 = ReLU()
         # second hidden layer
         self.hidden2 = Linear(3, 2)
         self.act2 = ReLU()
         # third hidden layer and output
-        self.hidden3 = Linear(2, 1)
-        self.act3 = Sigmoid()
+        self.hidden3 = Linear(2, output_size)
+        self.act3 = Tanh()
 
     # forward propagate input
     def forward(self, X):

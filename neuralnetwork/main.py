@@ -11,7 +11,7 @@ def predict(row, model):
     return Y
 
 
-model = MLP(2)
+model = MLP(input_size=2 ,output_size=1)
 
 output = predict(x_train, model)
 

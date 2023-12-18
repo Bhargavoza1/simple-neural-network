@@ -36,3 +36,22 @@ class Sigmoid(Module):
 
         # Return the result of the activation
         return self.activation
+
+
+class Tanh(Module):
+    def __init__(self):
+        super().__init__()
+
+    def tanh(self, x):
+        return np.tanh(x)
+
+    def forward(self, input_features):
+        # Forward pass of the tanh activation function
+        # Save the input features for potential use in the backward pass
+        self.input_features = input_features
+
+        # Apply the tanh activation element-wise
+        self.activation = self.tanh(self.input_features)
+
+        # Return the result of the activation
+        return self.activation
