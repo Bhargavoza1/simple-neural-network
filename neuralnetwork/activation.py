@@ -5,6 +5,9 @@ class ReLU(Module):
     def __init__(self):
         # Constructor, but it's empty in this case
         pass
+    def relu_derivative(self, x):
+        # Subgradient of the ReLU activation function
+        return np.where(x > 0, 1, 0)
 
     def forward(self, input_features):
         # Forward pass of the ReLU activation function
@@ -17,6 +20,8 @@ class ReLU(Module):
         # Return the result of the activation
         return self.activation
 
+    def backpropagation(self, output_error: float, learning_rate: float):
+        return self.relu_derivative(self.input_features) * output_error
 
 class Sigmoid(Module):
     def __init__(self):
@@ -25,6 +30,11 @@ class Sigmoid(Module):
 
     def sigmoid(self, x):
         return 1 / (1 + np.exp(-x))
+
+    def sigmoid_derivative(self, x):
+        # Derivative of the sigmoid activation function
+        sigmoid_x = self.sigmoid(x)
+        return sigmoid_x * (1 - sigmoid_x)
 
     def forward(self, input_features):
         # Forward pass of the sigmoid activation function
@@ -37,6 +47,9 @@ class Sigmoid(Module):
         # Return the result of the activation
         return self.activation
 
+    def backpropagation(self, output_error: float, learning_rate: float):
+        return self.sigmoid_derivative(self.input_features) * output_error
+
 
 class Tanh(Module):
     def __init__(self):
@@ -44,6 +57,10 @@ class Tanh(Module):
 
     def tanh(self, x):
         return np.tanh(x)
+
+    def tanh_derivative(self, x):
+        # Derivative of the tanh activation function
+        return 1 - np.tanh(x) ** 2
 
     def forward(self, input_features):
         # Forward pass of the tanh activation function
@@ -56,6 +73,8 @@ class Tanh(Module):
         # Return the result of the activation
         return self.activation
 
+    def backpropagation(self, output_error: float, learning_rate: float):
+        return self.tanh_derivative(self.input_features) * output_error
 
 class BinaryStep(Module):
     def __init__(self):
@@ -74,3 +93,7 @@ class BinaryStep(Module):
 
         # Return the result of the activation
         return self.activation
+
+    def backpropagation(self, output_error: float, learning_rate: float):
+        # derivative of binary step function is not possible
+        return 0

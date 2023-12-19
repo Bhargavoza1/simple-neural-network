@@ -5,3 +5,6 @@ class Module:
 
     def forward(self, input_features: int):
       pass
+
+    def backpropagation(self, output_error: float, learning_rate: float):
+        pass
