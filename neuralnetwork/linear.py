@@ -20,6 +20,7 @@ class Linear(Module):
         input_error = np.dot(output_error, self.weights.T)
         weights_error = np.dot( self.input_features.T, output_error)
 
+        # Update weights and bias using gradient descent
         self.weights -= learning_rate * weights_error
         self.bias -= learning_rate * output_error
         return input_error
