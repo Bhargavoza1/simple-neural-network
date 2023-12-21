@@ -1,9 +1,15 @@
 import numpy as np
-from mlp import MLP_XOR
+from mlp import MLP
 from losses import mse, mse_derivative
 
 x_train = np.array([[[0,0]], [[0,1]], [[1,0]], [[1,1]]])
-y_train = np.array([[[1,0]], [[0,1]], [[0,1]], [[1,0]]])
+# One-hot encoding for binary classification:
+# - [1, 0] represents the class label 0
+# - [0, 1] represents the class label 1
+y_train = np.array([[[1, 0]],   # Class 0
+                   [[0, 1]],    # Class 1
+                   [[0, 1]],    # Class 1
+                   [[1, 0]]])   # Class 0
 
 def predict_and_print_results( model , input_data, target_data):
     num_samples = len(input_data)
@@ -17,10 +23,10 @@ def predict_and_print_results( model , input_data, target_data):
         print(f'{predicted_output[0] }')
 
         if predicted_output[0][0] >= 0.5:
-            print(f'1st XOR value: {input_sample[0][0]} 2nd XOR value: {input_sample[0][1]} '
+            print(f'1st input for XOR: {input_sample[0][0]} 2nd input for XOR: {input_sample[0][1]} '
                   f'Neural Network output is 0, actual output is: {actual_output}')
         else:
-            print(f'1st XOR value: {input_sample[0][0]} 2nd XOR value: {input_sample[0][1]} '
+            print(f'1st input for XOR: {input_sample[0][0]} 2nd input for XOR: {input_sample[0][1]} '
                   f'Neural Network output is 1, actual output is: {actual_output}')
 
 
@@ -51,6 +57,6 @@ def train_neural_network(model, input_data, target_data, num_epochs, learning_ra
 
 
 
-model = MLP_XOR(input_size=2 ,output_size=2)
+model = MLP(input_size=2 ,output_size=2)
 train_neural_network(model , x_train, y_train, num_epochs=2000, learning_rate=0.3)
 predict_and_print_results(model , x_train, y_train )

@@ -1,9 +1,7 @@
-import numpy as np
-
 from module import Module
 from linear import Linear
-from activation import ReLU,Sigmoid, Tanh , BinaryStep
-class MLP_XOR(Module):
+from activation import ReLU,Sigmoid
+class MLP(Module):
     # define model elements
     def __init__(self, input_size:float, output_size:float):
 
