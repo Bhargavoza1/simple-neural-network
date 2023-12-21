@@ -8,11 +8,11 @@ y_train = np.array([[[1,0]], [[0,1]], [[0,1]], [[1,0]]])
 def predict_and_print_results( model , input_data, target_data):
     num_samples = len(input_data)
 
-    for sample_idx in range(num_samples):
-        input_sample = input_data[sample_idx]
+    for sample_index in range(num_samples):
+        input_sample = input_data[sample_index]
         predicted_output = model.forward(input_sample)
 
-        actual_output = 0 if target_data[sample_idx][0][0] == 1 else 1
+        actual_output = 0 if target_data[sample_index][0][0] == 1 else 1
 
         print(f'{predicted_output[0] }')
 
@@ -32,16 +32,16 @@ def train_neural_network(model, input_data, target_data, num_epochs, learning_ra
     for epoch in range(num_epochs):
         total_error = 0
 
-        for sample_idx in range(num_samples):
+        for sample_index in range(num_samples):
             # Forward propagation
-            input_sample = input_data[sample_idx]
+            input_sample = input_data[sample_index]
             predicted_output = model.forward(input_sample)
 
             # Compute loss (for display purposes only)
-            total_error += mse(target_data[sample_idx], predicted_output)
+            total_error += mse(target_data[sample_index], predicted_output)
 
             # Backward propagation
-            output_error = mse_derivative(target_data[sample_idx], predicted_output)
+            output_error = mse_derivative(target_data[sample_index], predicted_output)
             model.backpropagation(output_error, learning_rate)
 
         # Calculate the average error on all samples
