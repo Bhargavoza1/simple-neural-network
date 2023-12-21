@@ -53,7 +53,7 @@ class Sigmoid(Module):
 
 class Tanh(Module):
     def __init__(self):
-        super().__init__()
+      pass
 
     def tanh(self, x):
         return np.tanh(x)

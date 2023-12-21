@@ -3,7 +3,7 @@ from linear import Linear
 from activation import ReLU,Sigmoid
 class MLP(Module):
     # define model elements
-    def __init__(self, input_size:float, output_size:float):
+    def __init__(self, input_size:int, output_size:int):
 
         # input to first hidden layer
         self.hidden1 = Linear(input_size, 10)
@@ -16,10 +16,10 @@ class MLP(Module):
         self.act3 = Sigmoid()
 
     # forward propagate input
-    def forward(self, X):
+    def forward(self, input_features: float):
         # input to first hidden layer
 
-        X = self.hidden1.forward(X)
+        X = self.hidden1.forward(input_features)
         X = self.act1.forward(X)
         # second hidden layer
         X = self.hidden2.forward(X)
