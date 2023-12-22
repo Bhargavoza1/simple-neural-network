@@ -1,10 +1,10 @@
 # Base class
 class Module:
     def __init__(self):
-        pass
+       pass
 
     def forward(self, input_features: float):
-        pass
+        raise NotImplementedError("Subclasses must implement my_abstract_method")
 
     def backpropagation(self, output_error: float, learning_rate: float):
-        pass
+        raise NotImplementedError("Subclasses must implement my_abstract_method")

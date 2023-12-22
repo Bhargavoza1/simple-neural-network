@@ -5,7 +5,6 @@ import numpy as np
 class Linear(Module):
     def __init__(self, input_size: int, output_size: int, bias: bool = True, w_b_range: float = 0.5):
         # Initialize weights with random values between -w_b_range and w_b_range
-        super().__init__()
         self.weights = np.random.rand(input_size, output_size) - w_b_range
 
         # Initialize bias if bias is True, otherwise set bias to 0.0
