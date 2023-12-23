@@ -57,6 +57,6 @@ def train_neural_network(model, input_data, target_data, num_epochs, learning_ra
 
 
 
-model = MLP(input_size=2 ,output_size=2)
+model = MLP(input_size=2 ,output_size=2 , hiddenlayer=3 ,h_l_dimension=20)
 train_neural_network(model , x_train, y_train, num_epochs=2000, learning_rate=0.3)
 predict_and_print_results(model , x_train, y_train )
