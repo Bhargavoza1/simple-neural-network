@@ -46,7 +46,7 @@ class Sigmoid(Module):
 
         # Return the result of the activation
         return self.activation
-    #here output_error dC/dS
+    #here output_error is dC/dS
     def backpropagation(self, output_error: float, learning_rate: float):
         return self.sigmoid_derivative(self.input_features) * output_error
 
