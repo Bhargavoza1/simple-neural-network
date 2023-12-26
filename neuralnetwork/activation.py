@@ -20,6 +20,8 @@ class ReLU(Module):
         # Return the result of the activation
         return self.activation
 
+    #here output_error is dC/dR
+    #Remember we are doing Element-wise products between relu_derivative and output_error
     def backpropagation(self, output_error: float, learning_rate: float):
         return self.relu_derivative(self.input_features) * output_error
 
@@ -46,7 +48,9 @@ class Sigmoid(Module):
 
         # Return the result of the activation
         return self.activation
+
     #here output_error is dC/dS
+    #Remember we are doing Element-wise products between sigmoid_derivative and output_error
     def backpropagation(self, output_error: float, learning_rate: float):
         return self.sigmoid_derivative(self.input_features) * output_error
 
