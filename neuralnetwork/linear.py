@@ -18,6 +18,7 @@ class Linear(Module):
     # here output_error can be dE/dS x dS/dy or dE/dR x dR/dH depend on activation function and layer type
     def backpropagation(self, output_error, learning_rate):
 
+        #input_error is input for previous layer
         input_error = np.dot(output_error, self.weights.T)
         weights_error = np.dot( self.input_features.T, output_error)
 
