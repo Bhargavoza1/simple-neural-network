@@ -43,7 +43,7 @@ def train_neural_network(model, input_data, target_data, num_epochs, learning_ra
             input_sample = input_data[sample_index]
             predicted_output = model.forward(input_sample)
 
-            # Compute loss (for display purposes only)
+            # Compute loss
             total_error += mse(target_data[sample_index], predicted_output)
 
             # Backward propagation

@@ -7,7 +7,7 @@ class ReLU(Module):
         pass
     def relu_derivative(self, x):
         # Subgradient of the ReLU activation function
-        return np.where(x > 0, 1, 0)
+        return np.where(x >= 0, 1, 0)
 
     def forward(self, input_features):
         # Forward pass of the ReLU activation function
